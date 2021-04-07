@@ -1,1 +1,1 @@
-jekyll serve -s docs --watch
+jekyll serve -s docs -b '/legendary-pancake' --watch
