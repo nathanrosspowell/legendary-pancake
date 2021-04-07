@@ -1,3 +1,1 @@
-pushd website
-bundle exec jekyll serve --watch
-popd
+jekyll serve -s docs --watch
