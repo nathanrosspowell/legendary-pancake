@@ -3,59 +3,111 @@ layout: default
 ---
 
 <div class="home">
-  {%- if page.title -%}
-    <h1 class="page-heading">{{ page.title }}</h1>
-  {%- endif -%}
-
-  {{ content }}
 
 
-  {% if site.paginate %}
-    {% assign posts = paginator.posts %}
-  {% else %}
-    {% assign posts = site.posts %}
-  {% endif %}
-
-
-  {%- if posts.size > 0 -%}
-    {%- if page.list_title -%}
-      <h2 class="post-list-heading">{{ page.list_title }}</h2>
+  <!-- Blogging Section
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="docs-section" id="blog">
+    <h2 class="docs-header">Blog</h2>
+    {%- if page.title -%}
+      <h1 class="page-heading">{{ page.title }}</h1>
     {%- endif -%}
-    <ul class="post-list">
-      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
-      {%- for post in posts -%}
-      <li>
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
-        <h3>
-          <a class="post-link" href="{{ post.url | relative_url }}">
-            {{ post.title | escape }}
-          </a>
-        </h3>
-        {%- if site.show_excerpts -%}
-          {{ post.excerpt }}
-        {%- endif -%}
-      </li>
-      {%- endfor -%}
-    </ul>
+
+    {{ content }}
+
+
 
     {% if site.paginate %}
-      <div class="pager">
-        <ul class="pagination">
-        {%- if paginator.previous_page %}
-          <li><a href="{{ paginator.previous_page_path | relative_url }}" class="previous-page">{{ paginator.previous_page }}</a></li>
-        {%- else %}
-          <li><div class="pager-edge">•</div></li>
-        {%- endif %}
-          <li><div class="current-page">{{ paginator.page }}</div></li>
-        {%- if paginator.next_page %}
-          <li><a href="{{ paginator.next_page_path | relative_url }}" class="next-page">{{ paginator.next_page }}</a></li>
-        {%- else %}
-          <li><div class="pager-edge">•</div></li>
-        {%- endif %}
-        </ul>
-      </div>
-    {%- endif %}
+      {% assign posts = paginator.posts %}
+    {% else %}
+      {% assign posts = site.posts %}
+    {% endif %}
 
-  {%- endif -%}
+
+    {%- if posts.size > 0 -%}
+      {%- if page.list_title -%}
+        <h2 class="post-list-heading">{{ page.list_title }}</h2>
+      {%- endif -%}
+      <ul class="post-list">
+        {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+        {%- for post in posts -%}
+        <li>
+          <span class="post-meta">{{ post.date | date: date_format }}</span>
+          <h3>
+            <a class="post-link" href="{{ post.url | relative_url }}">
+              {{ post.title | escape }}
+            </a>
+          </h3>
+          {%- if site.show_excerpts -%}
+            {{ post.excerpt }}
+          {%- endif -%}
+        </li>
+        {%- endfor -%}
+      </ul>
+
+      {% if site.paginate %}
+        <div class="pager">
+          <ul class="pagination">
+          {%- if paginator.previous_page %}
+            <li><a href="{{ paginator.previous_page_path | relative_url }}" class="previous-page">{{ paginator.previous_page }}</a></li>
+          {%- else %}
+            <li><div class="pager-edge">•</div></li>
+          {%- endif %}
+            <li><div class="current-page">{{ paginator.page }}</div></li>
+          {%- if paginator.next_page %}
+            <li><a href="{{ paginator.next_page_path | relative_url }}" class="next-page">{{ paginator.next_page }}</a></li>
+          {%- else %}
+            <li><div class="pager-edge">•</div></li>
+          {%- endif %}
+          </ul>
+        </div>
+      {%- endif %}
+
+    {%- endif -%}
+
+
+  <!-- Social Media Section
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <hr>
+  <div class="docs-section" id="social">
+    <h2 class="docs-header">Social</h2>
+    <p>
+        Here are few places you can find me at on the web. 
+        You can poke me on those sites or hit up the 
+        <a href="#contact">contact form</a> below.</li>
+    </p>
+
+    <!-- columns should be the immediate child of a .row -->
+    <div class="container">
+      <div class="example-grid docs-example">
+        <div class="row">
+          <div class="four columns"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/nathanrosspowell/">LinkedIn</a></div>
+          <div class="four columns"><i class="fab fa-instagram"></i><a href="https://www.instagram.com/nathanrosspowell/">Instagram</a></div>
+          <div class="four columns"><i class="fab fa-twitter"></i><a href="https://twitter.com/nathanross">Twitter</a></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!-- Games Section
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <hr>
+  <div class="docs-section" id="games">
+    <h2 class="docs-header">Games</a></h2>
+    <p>These are the games that I've helped create.</p>
+
+    {% include_relative _snippets/games_table.html %}
+
+  </div>
+
+  <!-- CV Section
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <hr>
+  <div class="docs-section" id="cv">
+    <h2 class="docs-header">CV</h2>
+    <p>A PDF version of what you can find on this site can be found ++TODO++.</p>
+  </div>
 
 </div>
