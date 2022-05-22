@@ -1,5 +1,7 @@
 title: Nathan's Amazing Website
+author: Nathan Ross Powell
 email: nathanrosspowell@gmail.com
+website: nathanrosspowell.com
 description: >- # this means to ignore newlines until "baseurl:"
   Hey, I'm a video game professional. 
   This small site outlines my work experience, shares some of my projects and gives you ways to contact me.
@@ -9,6 +11,7 @@ baseurl: legendary-pancake/ # the subpath of your site, e.g. /blog
 url: "https://nathanrosspowell.com" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: nathanross
 github_username:  nathanrosspowell
+repository: nathanrosspowell/nathanrosspowell.github.io
 remote_theme: "dracula/gh-pages"
 show_header: true
 plugins:
@@ -16,3 +19,32 @@ plugins:
   - jekyll-seo-tag
 sass:
     style: compressed
+
+
+
+permalink: pretty
+excerpt_separator: <!--more-->
+collections:
+  games:
+    output: true
+  projects:
+    output: true
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "blog"
+  -
+    scope:
+      path: ""
+      type: "games" # previously `page` in Jekyll 2.2.
+    values:
+      layout: "games" # overrides previous default layout
+  -
+    scope:
+      path: ""
+      type: "projects" # previously `page` in Jekyll 2.2.
+    values:
+      layout: "projects" # overrides previous default layout
